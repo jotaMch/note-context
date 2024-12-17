@@ -1,6 +1,6 @@
 import React from "react";
 
-interface ButtonNameProps {
+interface ButtonProps {
     name?: string;
     w?: string;
     h?: string;
@@ -8,10 +8,10 @@ interface ButtonNameProps {
     bg?: string;
     color?: string;
     fz?: string;
-    type?: string; 
+    type?: "button" | "submit" | "reset"; 
 }
 
-const Button: React.FC<ButtonNameProps> = ({
+const Button: React.FC<ButtonProps> = ({
     name,
     w,
     h,
@@ -19,25 +19,26 @@ const Button: React.FC<ButtonNameProps> = ({
     fz,
     bg,
     color,
-    type,
+    type = "button", 
 }) => {
-const styledButton: React.CSSProperties = {
-    width: w,
-    height: h,
-    border: b,
-    backgroundColor: bg,
-    color: color,
-    fontSize: fz,
-    padding: 8,
-};
+    const styledButton: React.CSSProperties = {
+        width: w,
+        height: h,
+        border: b,
+        backgroundColor: bg,
+        color: color,
+        fontSize: fz,
+        padding: 8,
+    };
 
     return (
-        <input
+        <button
         style={styledButton}
-        type={type}
-        value={name || "Button"}
-        />
+        type={type} 
+        >
+        {name || "Button"}
+        </button>
     );
-    };
+};
 
 export default Button;
